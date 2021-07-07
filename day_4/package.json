@@ -1,0 +1,25 @@
+{
+  "name": "day_4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hisham-mhammed-afifi/NTI-Tasks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hisham-mhammed-afifi/NTI-Tasks/issues"
+  },
+  "homepage": "https://github.com/hisham-mhammed-afifi/NTI-Tasks#readme",
+  "dependencies": {
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.2"
+  }
+}
