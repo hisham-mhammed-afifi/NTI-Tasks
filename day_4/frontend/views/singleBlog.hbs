@@ -1,11 +1,12 @@
 {{>header}}
-{{#if langId}}
-<a class="btn btn-sm btn-dark btn-sm m-3" href="http://localhost:{{ port }}/blog/{{ data.id }}/1/">english</a>
-{{ else }}
-<a class="btn btn-sm btn-dark btn-sm m-3" href="http://localhost:{{ port }}/blog/{{ data.id }}/2/">arabic</a>
-{{/if}}
+
     <section class="container py-3 my-4">
-        <a class="btn btn-sm px-3 btn-outline-secondary" href="http://localhost:{{ port }}/blog/1/0/11">Back to Home Page</a>
+{{#if langId}}
+<a class="btn btn-sm btn-dark btn-sm m-3" href="http://{{localhost}}:{{ port }}/blog/{{ data.id }}/1/">english</a>
+{{ else }}
+<a class="btn btn-sm btn-dark btn-sm m-3" href="http://{{localhost}}:{{ port }}/blog/{{ data.id }}/2/">العربية</a>
+{{/if}}
+        <a class="btn btn-sm px-3 btn-outline-secondary" href="http://{{localhost}}:{{ port }}/blog/1/0/11">Back to Home Page</a>
         <h3 class="display-4 py-3">{{ data.title}}</h3>
         <p class="lead">{{ data.content}}</p>
     </section>

@@ -28,6 +28,7 @@ const getAll = (request, response) => {
   getApiData(url, (res, err) => {
     if (err) response.send(err);
     response.render("blog", {
+      localhost: request.hostname,
       port: process.env.PORT,
       langId: (langId = !langId),
       data: res.data,
@@ -40,6 +41,7 @@ const getOne = (request, response) => {
   getApiData(url, (res, err) => {
     if (err) response.send(err);
     response.render("singleBlog", {
+      localhost: request.hostname,
       port: process.env.PORT,
       langId: (langId = !langId),
       data: res.data[0],

@@ -1,10 +1,11 @@
 {{>header}}
-{{#if langId}}
-<a class="btn btn-sm btn-dark btn-sm m-3" href="http://localhost:{{ port }}/blog/1/0/11">english</a>
-{{ else }}
-<a class="btn btn-sm btn-dark btn-sm m-3" href="http://localhost:{{ port }}/blog/2/0/11">arabic</a>
-{{/if}}
+
     <section class="container my-5">
+{{#if langId}}
+<a class="btn btn-sm btn-dark btn-sm m-3" href="http://{{localhost}}:{{ port }}/blog/1/0/11">english</a>
+{{ else }}
+<a class="btn btn-sm btn-dark btn-sm m-3" href="http://{{localhost}}:{{ port }}/blog/2/0/11">العربية</a>
+{{/if}}
         <div class="row justify-content-center">
         {{#each data}}  
             <div class="col-lg-6">
@@ -18,7 +19,7 @@
                         <p>{{ this.comments.length }} Comments</p>
                     </div>
                 </div>
-                <a class="btn btn-outline-primary" href="http://localhost:{{ ../port }}/blog/{{ this.id }}/1/">
+                <a class="btn btn-outline-primary" href="http://{{../localhost}}:{{ ../port }}/blog/{{ this.id }}/1/">
                 Read more ...
                 </a>
             </div>
