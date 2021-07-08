@@ -1,4 +1,5 @@
 const http = require("http");
+let langId = true;
 
 const notFound = (request, response) => {
   response.render("notFound", { title: "404 NOT FOUND" });
@@ -28,7 +29,7 @@ const getAll = (request, response) => {
     if (err) response.send(err);
     response.render("blog", {
       port: process.env.PORT,
-      langId: 1,
+      langId: (langId = !langId),
       data: res.data,
       title: "BLOG",
     });
@@ -40,7 +41,7 @@ const getOne = (request, response) => {
     if (err) response.send(err);
     response.render("singleBlog", {
       port: process.env.PORT,
-      langId: 1,
+      langId: (langId = !langId),
       data: res.data[0],
       title: "SINGLE BLOG",
     });
