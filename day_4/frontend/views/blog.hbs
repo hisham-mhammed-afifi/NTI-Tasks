@@ -1,0 +1,23 @@
+{{>header}}
+    <section class="container my-5">
+        <div class="row justify-content-center">
+        {{#each data}}  
+            <div class="col-6">
+                <h3 class="display-6 py-3">{{ this.title }}</h3>
+                <p class="lead text-truncate">{{ this.content }}</p>
+                <div class="row">
+                    <div class="col">
+                        <p>{{ this.reactions.length }} Reactions</p>
+                    </div>
+                    <div class="col">
+                        <p>{{ this.comments.length }} Comments</p>
+                    </div>
+                </div>
+                <a class="btn btn-outline-primary" href="http://localhost:{{ ../port }}/blog/{{ this.id }}/{{ ../langId }}/">
+                Read more ...
+                </a>
+            </div>
+        {{/each}}
+        </div>
+    </section>
+{{>footer}}
