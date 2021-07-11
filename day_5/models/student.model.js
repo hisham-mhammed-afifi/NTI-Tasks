@@ -2,8 +2,6 @@ const { ObjectId } = require("bson");
 const mongoose = require("mongoose");
 const validator = require("validator");
 const { courseSchema } = require("./course.model");
-let title;
-let image;
 
 const studentSchema = new mongoose.Schema({
   studentId: {
