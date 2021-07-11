@@ -1,7 +1,8 @@
-const courseModel = require("../models/course.model");
-addCourse = async (req, res) => {
+const { Course } = require("../models/course.model");
+
+addNewCourse = async (req, res) => {
   try {
-    const courseData = new courseModel(req.body);
+    const courseData = new Course(req.body);
     await courseData.save();
     res.status(200).send({
       apiStatus: true,
@@ -18,12 +19,11 @@ addCourse = async (req, res) => {
 };
 showAllCourses = async (req, res) => {
   try {
-    const data = await courseModel.find();
-    res.status(200).send({
-      apiStatus: true,
-      message: "Here is all Courses.",
-      data: data,
-      count: data.length,
+    const data = await Course.find();
+    res.status(200).render("showAllCourses", {
+      data,
+      localhost: req.hostname,
+      port: process.env.PORT,
     });
   } catch (e) {
     res.status(500).send({
@@ -35,6 +35,6 @@ showAllCourses = async (req, res) => {
 };
 
 module.exports = {
-  addCourse,
+  addNewCourse,
   showAllCourses,
 };

@@ -1,0 +1,30 @@
+{{>header}}
+<main class="container">
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="http://{{localhost}}:{{port}}/students">All
+            Students</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://{{localhost}}:{{port}}/courses">All
+            Courses</a>
+        </li>
+      </ul>
+    </nav>
+
+    
+    <div class="row">
+    {{#each data}}
+        <div class="col col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+            <div class="card shadow my-3" style="width: 18rem;">
+            <img src="{{ this.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ this.title }}</h5>
+            </div>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+</main>
+{{>footer}}

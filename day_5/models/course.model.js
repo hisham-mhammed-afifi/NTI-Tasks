@@ -4,13 +4,14 @@ const courseSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
-    lowercase: true,
-    unique: true,
+    required: true,
+    uppercase: true,
   },
   image: {
     type: String,
     trim: true,
     unique: true,
+    required: true,
   },
 });
 
