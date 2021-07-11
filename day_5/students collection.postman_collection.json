@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "b752c3c9-4a87-487c-9d98-b37237078c15",
+		"name": "students collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"said\",\r\n    \"email\": \"said@email.com\",\r\n    \"password\": \"12345\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/addstudent/60e9bb96e66f4526b4e62350",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"addstudent",
+						"60e9bb96e66f4526b4e62350"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show all students",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 2,\r\n    \"name\": \"ahmed\",\r\n    \"email\": \"ahmed@email.com\",\r\n    \"password\": \"12345\",\r\n    \"courses\": [\r\n      {\r\n        \"title\": \"angular js\",\r\n        \"image\": \"/images/another.jpg\"\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show one students",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 2,\r\n    \"name\": \"ahmed\",\r\n    \"email\": \"ahmed@email.com\",\r\n    \"password\": \"12345\",\r\n    \"courses\": [\r\n      {\r\n        \"title\": \"angular js\",\r\n        \"image\": \"/images/another.jpg\"\r\n      }\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/60e9bd64e66f4526b4e62366",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"60e9bd64e66f4526b4e62366"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit student",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hesham\",\r\n    \"password\": \"12345\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/60e9bd64e66f4526b4e62366",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"60e9bd64e66f4526b4e62366"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hisham\",\r\n    \"password\": \"12345\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/60ea58cb5201dc307c5af653",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"60ea58cb5201dc307c5af653"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show student courses",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Hisham\",\r\n    \"password\": \"12345\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/60e9bfc87371e12ccc3efcc8/showallcourses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"60e9bfc87371e12ccc3efcc8",
+						"showallcourses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"title\": \"Learn GraphQL\",\r\n        \"image\": \"/images/graphql.png\"\r\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/courses/addcourse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"courses",
+						"addcourse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show all courses",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apply for a course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/students/60e9bd64e66f4526b4e62366/addcourse/60e9bc7fe66f4526b4e6235e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"60e9bd64e66f4526b4e62366",
+						"addcourse",
+						"60e9bc7fe66f4526b4e6235e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "leave the course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/students/60e9bd64e66f4526b4e62366/removecourse/60e9bc7fe66f4526b4e6235e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"students",
+						"60e9bd64e66f4526b4e62366",
+						"removecourse",
+						"60e9bc7fe66f4526b4e6235e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
