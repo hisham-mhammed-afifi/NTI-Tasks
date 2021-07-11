@@ -1,4 +1,3 @@
-const { ObjectId } = require("bson");
 const mongoose = require("mongoose");
 const validator = require("validator");
 const { courseSchema } = require("./course.model");
