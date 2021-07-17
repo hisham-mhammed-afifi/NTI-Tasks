@@ -7,4 +7,4 @@ const options = {
   useNewUrlParser: true,
 };
 
-mongoose.connect(process.env.MONGODBURL, options);
+mongoose.connect(process.env.DBURL, options);

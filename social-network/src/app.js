@@ -1,3 +1,4 @@
+require("dotenv").config();
 require("../database/connection");
 
 const cors = require("cors");
