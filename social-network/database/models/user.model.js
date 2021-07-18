@@ -79,29 +79,39 @@ const userSchema = new mongoose.Schema(
 // };
 
 // bcrypt password
+
 userSchema.pre("save", async function () {
-  if (this.isModified("password"))
+  if (this.isModified("password")) {
     this.password = await bcrypt.hash(
       this.password,
       parseInt(process.env.SALT)
     );
+  }
 });
 
 //login
-userSchema.statics.findByCreditionals = async (email, password) => {
-  const user = await User.findOne({ email });
-  if (!user) throw new Error("invalid email");
-  const isValid = await bcrypt.compare(password, user.password);
-  if (!isValid) throw new Error("invalid password");
-  return user;
-};
+// userSchema.statics.findByCreditionals = async (email, password) => {
+//   const user = await User.findOne({ email });
+//   if (!user) throw new Error("invalid email");
+//   const isValid = await bcrypt.compare(password, user.password);
+//   if (!isValid) throw new Error("invalid password");
+//   return user;
+// };
 
 //generate token
-userSchema.methods.generateToken = async function () {
-  const token = jwt.sign({ _id: user._id }, process.env.JWTKEY);
-  this.tokens = { ...this.tokens, token };
-  await user.save();
-  return token;
+// userSchema.methods.generateToken = async function () {
+//   const token = jwt.sign({ _id: user._id }, process.env.JWTKEY);
+//   this.tokens = { ...this.tokens, token };
+//   await user.save();
+//   return token;
+// };
+
+// compare password
+userSchema.methods.comparePassword = function (password, cb) {
+  bcrypt.compare(password, this.password, function (err, isMatch) {
+    if (err) return cb(err);
+    else return cb(null, isMatch);
+  });
 };
 
 //relation
