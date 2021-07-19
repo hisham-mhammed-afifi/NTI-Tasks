@@ -56,6 +56,11 @@ const userSchema = new mongoose.Schema(
       minLength: 11,
       maxLength: 11,
     },
+    role: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+      default: "60f53ef83e50f74334c6b936",
+    },
     tokens: [
       {
         token: {

@@ -71,7 +71,8 @@ class UserClass {
   static login = async (req, res) => {
     try {
       const user = await User.findOne({ email: req.body.email });
-      if (!user && !user.accountStatus) res.send("not found");
+      if (!user) res.send("not found");
+      if (!user.accountStatus) throw new Error("Account NOT activated.");
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (isMatch && !err) {
           const token = jwt.sign(user.toJSON(), process.env.JWTKEY);
@@ -87,6 +88,32 @@ class UserClass {
     } catch (e) {
       res.send(e.message);
     }
+  };
+
+  static me = async (req, res) => {
+    res.status(200).send({
+      apiStatus: true,
+      data: req.user,
+      message: "data fetched",
+    });
+  };
+
+  static showAll = async (req, res) => {
+    try {
+      const data = await User.find();
+      res.send(data);
+    } catch (e) {
+      res.send(e);
+    }
+  };
+
+  static image = async (req, res) => {
+    const photoPath = req.file.path;
+    req.user.photos = req.user.photos.concat({ photo: photoPath });
+    await req.user.save();
+    res.send({
+      data: req.user.photos,
+    });
   };
 
   static logout = async (req, res) => {
@@ -123,32 +150,6 @@ class UserClass {
         message: "error in logout",
       });
     }
-  };
-
-  static me = async (req, res) => {
-    res.status(200).send({
-      apiStatus: true,
-      data: req.user,
-      message: "data fetched",
-    });
-  };
-
-  static showAll = async (req, res) => {
-    try {
-      const data = await User.find();
-      res.send(data);
-    } catch (e) {
-      res.send(e);
-    }
-  };
-
-  static profileImage = async (req, res) => {
-    const photoPath = req.file.path;
-    req.user.photos = req.user.photos.concat({ photo: photoPath });
-    await req.user.save();
-    res.send({
-      data: req.user.photos,
-    });
   };
 }
 
