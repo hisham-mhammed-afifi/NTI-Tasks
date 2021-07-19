@@ -143,11 +143,11 @@ class UserClass {
   };
 
   static profileImage = async (req, res) => {
-    const image = req.file.path;
-    req.user.photos = req.user.photos.concat(image);
+    const photoPath = req.file.path;
+    req.user.photos = req.user.photos.concat({ photo: photoPath });
     await req.user.save();
     res.send({
-      data: req.user,
+      data: req.user.photos,
     });
   };
 }

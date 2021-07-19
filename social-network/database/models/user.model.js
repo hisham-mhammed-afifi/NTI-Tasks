@@ -34,13 +34,17 @@ const userSchema = new mongoose.Schema(
     },
     photos: [
       {
-        type: String,
-        trim: true,
+        photo: {
+          type: String,
+          trim: true,
+        },
       },
     ],
     following: [
       {
-        type: mongoose.Types.ObjectId,
+        follow: {
+          type: mongoose.Types.ObjectId,
+        },
       },
     ],
     accountStatus: {
