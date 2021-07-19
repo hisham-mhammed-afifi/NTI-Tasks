@@ -1,12 +1,35 @@
 const User = require("../../database/models/user.model");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const port = process.env.PORT;
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.MYEMAIL,
+    pass: process.env.PASSWORD,
+  },
+});
 
 class UserClass {
   static signup = async (req, res) => {
     try {
       const userData = new User(req.body);
       await userData.save();
+      const mailOption = {
+        from: "hish.abdelshafouk@gmail.com",
+        to: "hish.abdelshafouk@gmail.com",
+        subject: "to activate account",
+        text: `http://${req.hostname}:${port}/users/activate/${userData.otp}`,
+      };
       //send email==>
+      transporter.sendMail(mailOption, (err, info) => {
+        if (err) {
+          res.send("Error" + err);
+        } else {
+          res.send(info.accepted);
+        }
+      });
       res.status(200).send({
         apiStatus: true,
         data: userData,
@@ -21,10 +44,34 @@ class UserClass {
     }
   };
 
+  static activateUser = async (req, res) => {
+    try {
+      const userData = await User.findOne({
+        otp: req.params.otp,
+        accountStatus: false,
+      });
+      if (!userData) throw new Error("no users to activate");
+      userData.accountStatus = true;
+      userData.otp = "";
+      await userData.save();
+      res.status(200).send({
+        apiStatus: true,
+        data: userData,
+        message: "activated",
+      });
+    } catch (e) {
+      res.status(500).send({
+        apiStatus: false,
+        data: e.message,
+        message: "error",
+      });
+    }
+  };
+
   static login = async (req, res) => {
     try {
       const user = await User.findOne({ email: req.body.email });
-      if (!user) res.send("not found");
+      if (!user && !user.accountStatus) res.send("not found");
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (isMatch && !err) {
           const token = jwt.sign(user.toJSON(), process.env.JWTKEY);
@@ -86,30 +133,6 @@ class UserClass {
     });
   };
 
-  static activateUser = async (req, res) => {
-    try {
-      const userData = await User.findOne({
-        otp: req.params.otp,
-        userStatus: false,
-      });
-      if (!userData) throw new Error("no users to activate");
-      userData.userStatus = true;
-      userData.otp = "";
-      await userData.save();
-      res.status(200).send({
-        apiStatus: true,
-        data: userData,
-        message: "activated",
-      });
-    } catch (e) {
-      res.status(500).send({
-        apiStatus: false,
-        data: e.message,
-        message: "error",
-      });
-    }
-  };
-
   static showAll = async (req, res) => {
     try {
       const data = await User.find();
@@ -118,8 +141,10 @@ class UserClass {
       res.send(e);
     }
   };
+
   static profileImage = async (req, res) => {
-    req.user.image = req.file.path;
+    const image = req.file.path;
+    req.user.photos = req.user.photos.concat(image);
     await req.user.save();
     res.send({
       data: req.user,
