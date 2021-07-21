@@ -9,7 +9,7 @@ const categorySchema = new mongoose.Schema({
 });
 
 //relation
-userSchema.virtual("categoryPosts", {
+categorySchema.virtual("categoryPosts", {
   ref: "Post",
   localField: "_id",
   foreignField: "categoryId",

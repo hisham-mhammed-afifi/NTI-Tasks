@@ -15,7 +15,6 @@ const commentSchema = new mongoose.Schema(
     body: {
       type: String,
       trim: true,
-      required: true,
     },
     replys: [
       {
@@ -26,7 +25,6 @@ const commentSchema = new mongoose.Schema(
         body: {
           type: String,
           trim: true,
-          required: true,
         },
       },
     ],

@@ -26,8 +26,6 @@ class UserClass {
       transporter.sendMail(mailOption, (err, info) => {
         if (err) {
           res.send("Error" + err);
-        } else {
-          res.send(info.accepted);
         }
       });
       res.status(200).send({
