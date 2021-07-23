@@ -14,6 +14,7 @@ const groupSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["public", "private"],
+      default: "public",
     },
     members: [
       {
@@ -26,7 +27,7 @@ const groupSchema = new mongoose.Schema(
 );
 
 //relation
-postSchema.virtual("groupTopics", {
+groupSchema.virtual("groupTopics", {
   ref: "Topic",
   localField: "_id",
   foreignField: "groupId",

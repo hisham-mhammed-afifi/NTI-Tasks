@@ -21,8 +21,8 @@ class PostClass {
 
   static showAll = async (req, res) => {
     try {
-      const post = await Post.find();
-      res.status(200).send(post);
+      const posts = await Post.find();
+      res.status(200).send(posts);
     } catch (e) {
       res.status(500).send(e.message);
     }

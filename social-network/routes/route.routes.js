@@ -11,6 +11,7 @@ router.post("/add", async (req, res) => {
     res.status(500).send(e.message);
   }
 });
+
 router.get("/all", async (req, res) => {
   try {
     const data = await Route.find();
@@ -19,11 +20,11 @@ router.get("/all", async (req, res) => {
     res.status(500).send(e.message);
   }
 });
-router.post("/addrole/:id", async (req, res) => {
+
+router.post("/addrole", async (req, res) => {
   try {
-    _id = req.params.id;
     role = req.body.role;
-    const route = await Route.findById(_id);
+    const route = await Route.findById(req.body._id);
     route.roles = route.roles.concat(role);
     await route.save();
     res.status(200).send(route);
@@ -31,4 +32,5 @@ router.post("/addrole/:id", async (req, res) => {
     res.status(500).send(e.message);
   }
 });
+
 module.exports = router;
