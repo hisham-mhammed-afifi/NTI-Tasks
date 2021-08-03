@@ -18,10 +18,10 @@ export class LogoutComponent implements OnInit {
         localStorage.removeItem('jwt');
         this._user.loginFlag = false;
 
-        console.log('responce', res);
+        console.log('response', res);
       },
       (error) => console.log('error', error),
-      () => this._router.navigateByUrl('/user/login')
+      () => this._router.navigateByUrl('user/login')
     );
   }
 }

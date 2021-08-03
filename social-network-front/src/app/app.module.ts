@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { UserInterceptor } from './interceptor/user.interceptor';
+import { ChatComponent } from './components/chat/chat.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { UserInterceptor } from './interceptor/user.interceptor';
     LoginComponent,
     LogoutComponent,
     HomeComponent,
+    ChatComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

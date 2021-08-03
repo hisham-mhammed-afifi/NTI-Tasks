@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
     this.userData = form.value;
     this._user.login(this.userData).subscribe(
       (res) => {
-        localStorage.setItem('jwt', res.token);
+        if (!localStorage.getItem('jwt')) {
+          localStorage.setItem('jwt', res.token);
+        }
         this._user.loginFlag = true;
 
-        console.log(res);
+        console.log('Login Flag: ', this._user.loginFlag);
       },
-      (error) => console.log(error)
-      // () => this._router.navigateByUrl('/home')
+      (error) => console.log(error),
+      () => this._router.navigateByUrl('')
     );
   }
 }

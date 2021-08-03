@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  public loginFlag = false;
+  public loginFlag: Boolean = false;
   private url: string = 'http://localhost:3000/users/';
   constructor(private _http: HttpClient) {}
 

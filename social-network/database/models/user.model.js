@@ -52,6 +52,9 @@ const userSchema = new mongoose.Schema(
       ref: "Role",
       default: "60f53ef83e50f74334c6b936",
     },
+    macs: {
+      type:Array
+    },
     tokens: [
       {
         token: {

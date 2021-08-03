@@ -7,3 +7,8 @@
   right: 1%;
   top: 75px;
 }
+.chat-card {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}

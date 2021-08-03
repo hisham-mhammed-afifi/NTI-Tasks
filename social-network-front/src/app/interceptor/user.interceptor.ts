@@ -23,7 +23,7 @@ export class UserInterceptor implements HttpInterceptor {
         headers: request.headers.set('Authorization', token),
       });
     }
-    console.log(request);
+    console.log('from user interceptor', request);
 
     return next.handle(request);
   }
