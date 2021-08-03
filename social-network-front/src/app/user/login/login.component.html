@@ -1,0 +1,30 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-6 shadow-lg">
+    <form class="mt-5" #form="ngForm" (ngSubmit)="login(form)">
+      <!-- inputs -->
+      <div class="mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email address"
+          name="email"
+          ngModel
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Your Password"
+          name="password"
+          ngModel
+        />
+      </div>
+
+      <div class="d-grid gap-3 my-3">
+        <button class="btn btn-dark" type="submit">Login</button>
+        <a routerLink="/user/signup" class="btn btn-outline-dark">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>

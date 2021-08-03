@@ -1,0 +1,9 @@
+.parent {
+  position: relative;
+}
+.fixed-right {
+  position: absolute;
+  width: 73%;
+  right: 1%;
+  top: 75px;
+}

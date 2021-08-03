@@ -14,6 +14,7 @@ const transporter = nodemailer.createTransport({
 class UserClass {
   static signup = async (req, res) => {
     try {
+      console.log(req.body);
       const userData = new User(req.body);
       await userData.save();
       const mailOption = {
@@ -116,8 +117,8 @@ class UserClass {
 
   static logout = async (req, res) => {
     try {
-      req.user.tokens = req.user.tokens.filter((el) => {
-        return el.token != req.header("Authorization").replace("jwt ", "");
+      req.user.tokens = req.user.tokens.filter((token) => {
+        return token != req.header("Authorization").replace("jwt ", "");
       });
       await req.user.save();
       res.status(200).send({

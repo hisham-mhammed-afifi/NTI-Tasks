@@ -3,11 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      trim: true,
-    },
-    lastName: {
+    name: {
       type: String,
       trim: true,
     },
@@ -50,11 +46,6 @@ const userSchema = new mongoose.Schema(
     accountStatus: {
       type: Boolean,
       default: false,
-    },
-    phone: {
-      type: String,
-      minLength: 11,
-      maxLength: 11,
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,

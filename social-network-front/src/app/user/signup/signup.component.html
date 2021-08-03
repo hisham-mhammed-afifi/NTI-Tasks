@@ -1,0 +1,76 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-6 shadow-lg">
+    <form #form="ngForm" class="mt-5" (ngSubmit)="signup(form)">
+      <!-- inputs -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Your Name"
+          name="name"
+          ngModel
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email address"
+          name="email"
+          ngModel
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Your Password"
+          name="password"
+          ngModel
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Date of birth"
+          name="birthDate"
+          ngModel
+        />
+      </div>
+
+      <!-- select -->
+
+      <select class="form-select mt-3" name="country" ngModel>
+        <option value="egypt">Egypt</option>
+      </select>
+
+      <!-- check boxs -->
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          value="male"
+          name="gender"
+          ngModel
+        />
+        <label class="form-check-label">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          value="female"
+          name="gender"
+          ngModel
+        />
+        <label class="form-check-label">Female</label>
+      </div>
+
+      <div class="d-grid gap-3 my-3">
+        <button class="btn btn-dark" type="submit">Sign Up</button>
+        <a routerLink="/user/login" class="btn btn-outline-dark">Login</a>
+      </div>
+    </form>
+  </div>
+</div>
