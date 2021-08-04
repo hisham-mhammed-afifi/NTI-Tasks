@@ -1,6 +1,6 @@
 const User = require("../../database/models/user.model");
 const jwt = require("jsonwebtoken");
-const macaddress = require('macaddress');
+const macaddress = require("macaddress");
 const nodemailer = require("nodemailer");
 const port = process.env.PORT;
 
@@ -73,23 +73,26 @@ class UserClass {
       const user = await User.findOne({ email: req.body.email });
       if (!user) res.send("not found");
       if (!user.accountStatus) throw new Error("Account NOT activated.");
-      user.comparePassword(req.body.password, function (err, isMatch) {
-        if (isMatch && !err) {  
-                 
+
+      user.comparePassword(req.body.password, (err, isMatch) => {
+        if (isMatch && !err) {
           macaddress.one((err, mac) => {
-            if(err)  {
-              console.log("err in mac address", err);
-            }else{
-              if(!user.macs.includes(mac)) {
-                const token = jwt.sign(user.toJSON(), process.env.JWTKEY); 
-            user.macs = user.macs.concat(mac)
-            user.tokens = user.tokens.concat({ token });
-            console.log(mac);
-          }  
-          }
+            if (!err) {
+              if (!user.macs.includes(mac)) {
+                const token = jwt.sign(user.toJSON(), process.env.JWTKEY);
+                user.tokens = user.tokens.concat({ token });
+                user.macs = user.macs.concat(mac);
+
+                user.save();
+                res.send({
+                  user,
+                  token: "jwt " + token,
+                  message: "Loged In",
+                });
+              }
             }
-          );
-          const token = user.tokens[0].token
+          });
+          const token = user.tokens[0].token;
           user.save();
           res.send({
             user,
