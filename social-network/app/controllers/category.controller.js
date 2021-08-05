@@ -11,6 +11,15 @@ class CategoryClass {
     }
   };
 
+  static showAll = async (req, res) => {
+    try {
+      const categories = await Category.find();
+      res.status(200).send(categories);
+    } catch (e) {
+      res.status(500).send(e.message);
+    }
+  };
+
   static deleteCategory = async (req, res) => {
     try {
       await Category.findByIdAndDelete(req.body._id);

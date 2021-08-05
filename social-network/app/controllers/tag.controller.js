@@ -10,6 +10,15 @@ class TagClass {
     }
   };
 
+  static showAll = async (req, res) => {
+    try {
+      const tags = await Tag.find();
+      res.status(200).send(tags);
+    } catch (e) {
+      res.status(500).send(e.message);
+    }
+  };
+
   static updateTag = async (req, res) => {
     try {
       await Tag.findByIdAndUpdate(req.params.id, req.body);

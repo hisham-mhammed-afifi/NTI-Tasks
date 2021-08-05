@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgSelect2Module } from 'ng-select2';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -15,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserInterceptor } from './interceptor/user.interceptor';
 import { ChatComponent } from './components/chat/chat.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { AddPostComponent } from './components/posts/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     HomeComponent,
     ChatComponent,
     NotfoundComponent,
+    AddPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgSelect2Module,
   ],
   providers: [
     {

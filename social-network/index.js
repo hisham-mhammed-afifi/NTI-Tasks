@@ -12,18 +12,18 @@ const io = require("socket.io")(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.join("some room");
-  socket.to("some room").emit("myMsg");
+  // socket.join("some room");
+  // socket.to("some room").emit("myMsg");
   console.log("a user connected");
 
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
 
-  socket.on("myMsg", (id, message) => {
-    socket.to(id).emit("myMsg", socket.id, message);
-    console.log(id);
-    // socket.broadcast.emit("message-broadcast", message);
+  socket.on("myMsg", (message) => {
+    //   socket.to(id).emit("myMsg", socket.id, message);
+    //   console.log(id);
+    socket.broadcast.emit("message-broadcast", message);
   });
 });
 

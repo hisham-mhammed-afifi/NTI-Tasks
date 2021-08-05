@@ -21,20 +21,39 @@ export class ChatComponent implements OnInit {
     });
     this.socket.on('message-broadcast', (data: string) => {
       if (data) {
-        document.querySelector('#send')?.append(data);
+        const style =
+          'background: gold; float: left; padding: 5px 10px; border-radius: 10px; width: 90%';
+        document.querySelector('#send')?.insertAdjacentHTML(
+          'beforeend',
+          `
+        <p style="${style}">${data}</p>
+        `
+        );
+
+        let el = document.querySelector('#send');
+        if (el) {
+          el.scrollTop = el.scrollHeight;
+        }
       }
     });
   }
 
   sendMessage() {
-    const p = document.createElement('p');
-    p.classList.add('text-end');
-
     this.socket.emit('myMsg', this.message);
 
-    const message = document.createTextNode(this.message);
-    p.appendChild(message);
-    document.querySelector('#send')?.appendChild(p);
+    const style =
+      'background: dodgerblue; float: right; color: white; padding: 5px 10px; border-radius: 10px; width: 90%';
+
+    document.querySelector('#send')?.insertAdjacentHTML(
+      'beforeend',
+      `
+    <p style="${style}">${this.message}</p>
+    `
+    );
+    let el = document.querySelector('#send');
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
     this.message = '';
   }
 }

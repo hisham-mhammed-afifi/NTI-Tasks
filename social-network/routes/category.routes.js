@@ -6,6 +6,7 @@ const auth = passport.authenticate("jwt", { session: false });
 const categoryController = require("../app/controllers/category.controller");
 
 router.post("/add", [auth, authorize], categoryController.addCategory);
+router.get("/showall", auth, categoryController.showAll);
 router.delete("/delete", [auth, authorize], categoryController.deleteCategory);
 
 module.exports = router;

@@ -1,1 +1,14 @@
-<p>posts works!</p>
+<div *ngFor="let post of posts" class="card mb-3">
+  <img
+    src="https://st3.depositphotos.com/1813774/19042/i/600/depositphotos_190424116-stock-photo-historical-medieval-city-along-the.jpg"
+    class="card-img-top img"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">
+      {{ post.body }}
+    </p>
+    <a href="#" class="btn btn-outline-dark">See More ...</a>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-sm-10 shadow-lg">
+    <form #form="ngForm" class="mt-5" (ngSubmit)="addPost(form)">
+      <!-- inputs -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Post Title ..."
+          name="title"
+          ngModel
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="The Content ..."
+          name="content"
+          ngModel
+        />
+      </div>
+
+      <!-- select -->
+
+      <select class="form-select mt-3" name="categoryId" ngModel>
+        <option *ngFor="let category of categories" value="{{ category._id }}">
+          {{ category.name }}
+        </option>
+      </select>
+
+      <select class="form-select mt-3" name="tags" multiple ngModel>
+        <option *ngFor="let tag of tags" value="{{ tag._id }}">
+          {{ tag.name }}
+        </option>
+      </select>
+
+      <div class="d-grid gap-3 my-3">
+        <button class="btn btn-dark" type="submit">Publish New Post</button>
+      </div>
+    </form>
+  </div>
+</div>
